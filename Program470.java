@@ -1,0 +1,43 @@
+import java.util.*;
+import java.io.*;
+
+class Program470
+{
+    public static void main(String A[]) 
+    {
+        try
+        {
+            Scanner sobj = new Scanner(System.in);
+
+            System.out.println("Enter the name of file that contains packed data:");
+            String PackName = sobj.nextLine();
+
+            File fobj = new File(PackName);
+
+            if(!fobj.exists())
+            {
+                System.out.println("unable to access Packed file");
+                return;
+            }
+
+            System.out.println("Packed file gets successfully opened");
+
+            FileInputStream fiobj = new FileInputStream(fobj);
+
+            //Buffer to read the header
+            byte HeaderBuffer[] = new byte[100];
+
+            fiobj.read(HeaderBuffer,0,100);
+
+            //convert byte array to string
+            String Header = new String(HeaderBuffer);
+
+            System.out.println(Header);
+
+        }
+        catch(Exception eobj)
+        {
+
+        }
+    }//end of main
+}//end of program467 class
